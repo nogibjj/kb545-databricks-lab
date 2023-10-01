@@ -3,14 +3,11 @@
 import sqlite3
 
 
-def query():
-    """Query the database for the top 5 rows of the GroceryDB table"""
+def query(query_statement):
+    """Executes Passed Query"""
     conn = sqlite3.connect("GroceryDB.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM GroceryDB")
-    print("Top 5 rows of the GroceryDB table:")
+    cursor.execute(query_statement)
     print(cursor.fetchall())
     conn.close()
     return "Success"
-
-
