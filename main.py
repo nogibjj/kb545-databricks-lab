@@ -21,9 +21,10 @@ def main(query_statement):
     query(query_statement)
 
 
-# sql_statement = """SELECT general_name FROM GroceryDB WHERE count_products > 10"""
-# sql_statement = """ DELETE FROM GroceryDB WHERE general_name LIKE 'locust bean gum' """
-# sql_statement = ("""SELECT general_name FROM GroceryDB WHERE general_name LIKE '%bean%'""")
+# Following below are sample CRUD Operations
+# """SELECT general_name FROM GroceryDB WHERE count_products > 10"""
+# """ DELETE FROM GroceryDB WHERE general_name LIKE 'locust bean gum' """
+# """SELECT general_name FROM GroceryDB WHERE general_name LIKE '%bean%'"""
 
 # main(sql_statement)
 if __name__ == "__main__":
