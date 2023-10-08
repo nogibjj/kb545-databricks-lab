@@ -17,5 +17,3 @@ with sql.connect(
     with connection.cursor() as cursor:
         cursor.execute(query)
         result = cursor.fetchall()
-
-        print(result)
