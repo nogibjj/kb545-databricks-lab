@@ -2,11 +2,13 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 from main import query, run_query
+from dotenv import load_dotenv
 
 
 class TestRunQuery(unittest.TestCase):
     @patch("sys.stdout", new_callable=StringIO)
     def test_run_query(self, mock_stdout):
+        load_dotenv()
         expected_output = "[(u'Goran Dragic', 0), (u'Josh Richardson', -1), \
             (u'Kelly Olynyk', -2), (u'Wayne Ellington', -3), \
                 (u'James Johnson', -4), (u'Justise Winslow', -5), \
