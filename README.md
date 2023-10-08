@@ -1,23 +1,26 @@
-# 706 Mini-Lab 5: Python Script interacting with SQL Database
+# 706 Mini-Lab 6: Python Script Complex SQL Query
 
-This purpose of this lab was to setup code that will take a csv file, create a SQL database, and utilize SQLite to perform CRUD (Create, Read, Update, Delete) Operations. The entire system is wrapped around the Fire library. This library was utilized to make performing CRUD Operations with the database all through the command line, giving the project a CLI.
+This purpose of this lab was to setup Azure Databricks Workspace, where we created a SQL Warehouse to host multiple databases that would be queried upon to execute a complex SQL Query. The purpose of the query was to determine if any Miami Heat players in the 2018-2019 roster improved their average Field Goal (FG) in the 2019-2020 season.
 
 ### Tasks Performed
 
-* Create SQL Database
-* Write code to utilize SQLite for query execution
-* Wrap main.py execution with Fire library to convert code into CLI
-* Write up different CRUD SQL Queries to test functionality
-* Test connection
+* Created an Azure Databricks Workspace
+* Created a Compute Cluster within Databricks
+* Setup NBA Statistic Databases in a SQL Warehouse
+* Create main.py that SQL Warehouse using login credentials stored in .env file
+* Executed Complex SQL Query to retrieve FG differential
+* Test SQL Connection
 
-### Execution Diagram
+### Query Explanation
+```
+SELECT t1.Player, t1.FG - t2.FG AS FG_Change FROM nba__stats_2019 as t1 JOIN heat_2018 as t2 ON t1.Player = t2.Name
+WHERE t1.Tm LIKE 'MIA'
+ORDER BY FG_Change DESC
+```
 
-![dbDiagram](https://github.com/nogibjj/kb545-sqlite-lab/assets/55768636/9b81b901-b54e-4546-b216-a79ea7b026cb)
+This query first joins two databases. One that stores the player stats for Miami Heat players on the 2018-2019 roster, and a second database that stores the player stats for every NBA player during the 2019-2020 season. It joins these two databases based on a player's full name.
 
-### Query Proof
+Then, the query creates a new field called FG_Change. This field is the average FG of each player during the 2019-2020 game versus the 2018-2019 game. By this logic, a postive value means the player improved, and a negative value means the player got worse. 
 
-![image](https://github.com/nogibjj/kb545-sqlite-lab/assets/55768636/9a9fc19c-ebbf-420f-96f7-13756508dde6)
+Finally, the output is sorted so that the greater the FG change, the higher the player appears in the output. This is shown below
 
-![image](https://github.com/nogibjj/kb545-sqlite-lab/assets/55768636/3d4b0d73-fe8c-45c6-a1e7-1d37552bcb23)
-
-![image](https://github.com/nogibjj/kb545-sqlite-lab/assets/55768636/80421028-d345-42f1-b355-968f81242781)
