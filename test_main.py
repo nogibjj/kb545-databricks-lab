@@ -15,7 +15,3 @@ class TestRunQuery(unittest.TestCase):
                         (u'Derrick Jones Jr.', -10), (u'Rodney McGruder', -11)]\n"
         run_query(query)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
-
-
-if __name__ == "__main__":
-    unittest.main()
