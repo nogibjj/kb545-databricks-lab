@@ -9,11 +9,15 @@ ORDER BY FG_Change DESC"""
 
 load_dotenv()
 
-with sql.connect(
-    server_hostname=os.getenv("databricks_hostname"),
-    http_path=os.getenv("databricks_http"),
-    access_token=os.getenv("databricks_access"),
-) as connection:
-    with connection.cursor() as cursor:
-        cursor.execute(query)
-        result = cursor.fetchall()
+
+def run_query(query):
+    load_dotenv()
+
+    with sql.connect(
+        server_hostname=os.getenv("databricks_hostname"),
+        http_path=os.getenv("databricks_http"),
+        access_token=os.getenv("databricks_access"),
+    ) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+            result = cursor.fetchall()
