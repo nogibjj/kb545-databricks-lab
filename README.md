@@ -24,3 +24,5 @@ Then, the query creates a new field called FG_Change. This field is the average 
 
 Finally, the output is sorted so that the greater the FG change, the higher the player appears in the output. This is shown below
 
+![image](https://github.com/nogibjj/kb545-databricks-lab/assets/55768636/cd13be19-4b6e-4ac9-8b46-f6389436b7e6)
+
